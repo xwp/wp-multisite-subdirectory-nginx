@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - wordpress
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/site
+    ports:
+      - 80:80
+
+  wordpress:
+    build: ./docker/wordpress
+    depends_on:
+      - mysql
+    restart: always
+    volumes:
+      - .:/var/www/site
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8033:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root

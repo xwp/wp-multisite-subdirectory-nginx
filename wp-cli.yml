@@ -1,0 +1,10 @@
+path: web/wp
+url: subdir.wpenv.net
+
+# Define the default multisite install config.
+core multisite-install:
+  title: Subdirectory Network
+  admin_user: admin
+  admin_password: password
+  admin_email: admin@subdir.wpenv.net
+  skip-config:
