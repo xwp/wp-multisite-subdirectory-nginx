@@ -19,15 +19,15 @@ See [`nginx.conf`](nginx.conf) for the relevant Nginx configuration and specific
 
 1. Install Composer dependencies:
 
-    composer install
+        composer install
 
 2. Start the server environment:
 
-    composer start
+        composer start
 
 3. Setup the WP sub-directory network:
 
-    composer setup
+        composer setup
 
 Visit the environment at [subdir.wpenv.net](http://subdir.wpenv.net) or [subdir.wpenv.net:8033](http://subdir.wpenv.net:8033) to view PHPMyAdmin.
 
